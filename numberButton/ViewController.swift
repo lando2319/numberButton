@@ -12,9 +12,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
+    var strings: [String] = []
+    var total = 0
+    var count = 0
     @IBAction func buttonIsTapped(_ sender: Any) {
         let diceRoll = Int(arc4random_uniform(6) + 1)
+        total += diceRoll
+        count += 1
         self.bottomLabel.text = "Your number is \(diceRoll)"
+        strings.append(self.bottomLabel.text!)
     }
     
     override func viewDidLoad() {
@@ -31,6 +37,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let newVC: ViewController2 = segue.destination as! ViewController2
+        let passedPhrase = bottomLabel.text
+        newVC.recievedString = passedPhrase!
+        newVC.strings = strings
+        newVC.average = Double(total) / Double(count)
     }
 
 
