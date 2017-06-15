@@ -11,12 +11,21 @@ import UIKit
 class ViewController2: UIViewController {
 
     @IBOutlet weak var myLabel1: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     var recievedString = String()
     var strings: [String] = []
     var average: Double = 0
+    var win = true
+    var bet = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         myLabel1.text = recievedString
+        if win {
+            resultLabel.text = "Congrats! You won $\(bet)0"
+        }
+        else {
+            resultLabel.text = "Sorry, you lost $\(bet)0"
+        }
         // Do any additional setup after loading the view.
     }
 
