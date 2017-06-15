@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ED7840D1EF2DFAC0088599C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7840C1EF2DFAC0088599C /* ViewController2.swift */; };
+		5ED784111EF2E4D20088599C /* ViewControllerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED784101EF2E4D20088599C /* ViewControllerTable.swift */; };
 		CC7E5E521EF2558300EEC608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E5E511EF2558300EEC608 /* AppDelegate.swift */; };
 		CC7E5E541EF2558300EEC608 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E5E531EF2558300EEC608 /* ViewController.swift */; };
 		CC7E5E571EF2558300EEC608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7E5E551EF2558300EEC608 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5ED7840C1EF2DFAC0088599C /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController2.swift; path = ../ViewController2.swift; sourceTree = "<group>"; };
+		5ED784101EF2E4D20088599C /* ViewControllerTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerTable.swift; path = ../ViewControllerTable.swift; sourceTree = "<group>"; };
 		CC7E5E4E1EF2558300EEC608 /* numberButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = numberButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7E5E511EF2558300EEC608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC7E5E531EF2558300EEC608 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		CC7E5E501EF2558300EEC608 /* numberButton */ = {
 			isa = PBXGroup;
 			children = (
+				5ED784101EF2E4D20088599C /* ViewControllerTable.swift */,
+				5ED7840C1EF2DFAC0088599C /* ViewController2.swift */,
 				CC7E5E511EF2558300EEC608 /* AppDelegate.swift */,
 				CC7E5E531EF2558300EEC608 /* ViewController.swift */,
 				CC7E5E551EF2558300EEC608 /* Main.storyboard */,
@@ -264,6 +270,8 @@
 			files = (
 				CC7E5E541EF2558300EEC608 /* ViewController.swift in Sources */,
 				CC7E5E521EF2558300EEC608 /* AppDelegate.swift in Sources */,
+				5ED7840D1EF2DFAC0088599C /* ViewController2.swift in Sources */,
+				5ED784111EF2E4D20088599C /* ViewControllerTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +522,7 @@
 				CC7E5E781EF2558300EEC608 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC7E5E791EF2558300EEC608 /* Build configuration list for PBXNativeTarget "numberButtonTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +531,7 @@
 				CC7E5E7B1EF2558300EEC608 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC7E5E7C1EF2558300EEC608 /* Build configuration list for PBXNativeTarget "numberButtonUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +540,7 @@
 				CC7E5E7E1EF2558300EEC608 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
