@@ -15,10 +15,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     var strings: [String] = []
-    let options: [Double] = [1,2,3,4,5,6,7,8,9,10]
+    var options: [Double] = []
+    
     var total = 0
     var count = 0
-    var money = 5.0
+    var money = 100.0
     var bet = 1.0
     var compRoll = 0
     var userRoll = 0
@@ -28,6 +29,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             createAlert(title: "Invalid Bet", message: "You cannot bet more money than you have.")
             return
         }
+        
+        let diceRoll1 = Int(arc4random_uniform(6) + 1)
+        compRoll = diceRoll1
+        
+        self.topLabel.numberOfLines = 0
+        
+        self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll1)"
+        
         let diceRoll = Int(arc4random_uniform(6) + 1)
         userRoll = diceRoll
         total += diceRoll
@@ -57,6 +66,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll)"
         
+        for i in 1...100 {
+            options.append(Double(i))
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
