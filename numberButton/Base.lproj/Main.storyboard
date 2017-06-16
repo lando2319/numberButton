@@ -112,6 +112,15 @@
                                     <constraint firstAttribute="width" constant="116" id="14l-iw-GIh"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXo-zZ-gfM">
+                                <rect key="frame" x="121" y="529" width="133" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="STOP"/>
+                                <connections>
+                                    <action selector="stopPressed:" destination="0nZ-xn-lYd" eventType="touchUpInside" id="ft6-bj-ZMp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,8 +149,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dieRoll" destination="UUC-Z3-laU" id="IN7-pa-Cc0"/>
+                        <outlet property="history" destination="U4T-ki-kvf" id="ObB-tx-N9U"/>
                         <outlet property="myLabel1" destination="am0-ir-GbI" id="3at-XO-Rq9"/>
                         <outlet property="resultLabel" destination="Hpd-Ck-rsx" id="QbX-AF-onz"/>
+                        <outlet property="stop" destination="RXo-zZ-gfM" id="eS0-dY-b1K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9g-vs-wCC" userLabel="First Responder" sceneMemberID="firstResponder"/>

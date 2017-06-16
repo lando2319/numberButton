@@ -13,16 +13,14 @@ class ViewController2: UIViewController {
     @IBOutlet weak var myLabel1: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var dieRoll: UIImageView!
+    @IBOutlet weak var stop: UIButton!
+    @IBOutlet weak var history: UIButton!
     
     var animImages: [UIImage] = [UIImage(named: "die1")!, UIImage(named: "die2")!,
                                  UIImage(named: "die3")!, UIImage(named: "die4")!,
-                                 UIImage(named: "die5")!, UIImage(named: "die6")!,
-                                 UIImage(named: "die1")!, UIImage(named: "die2")!,
-                                 UIImage(named: "die3")!, UIImage(named: "die4")!,
-                                 UIImage(named: "die5")!, UIImage(named: "die6")!,
-                                 UIImage(named: "die1")!, UIImage(named: "die2")!,
-                                 UIImage(named: "die3")!, UIImage(named: "die4")!,
-                                 UIImage(named: "die5")!, UIImage(named: "die6")!]
+                                 UIImage(named: "die5")!, UIImage(named: "die6")!,UIImage(named: "die3")!, UIImage(named: "die1")!,
+                                 UIImage(named: "die5")!, UIImage(named: "die2")!,
+                                 UIImage(named: "die4")!, UIImage(named: "die6")!]
     var recievedString = String()
     var strings: [String] = []
     var rolls: [Int] = []
@@ -31,11 +29,12 @@ class ViewController2: UIViewController {
     var bet = 0.0
     var roll = 0
     override func viewDidLoad() {
+        history.isEnabled = false
+        stop.isEnabled = true
         super.viewDidLoad()
         dieRoll.animationImages = animImages
-        dieRoll.animationDuration = 1
+        dieRoll.animationDuration = 0.75
         dieRoll.startAnimating()
-        self.perform(#selector(ViewController2.afterAnimation), with: nil, afterDelay: dieRoll.animationDuration)
         
         // Do any additional setup after loading the view.
     }
@@ -46,6 +45,12 @@ class ViewController2: UIViewController {
     }
     
 
+    @IBAction func stopPressed(_ sender: Any) {
+        stop.isEnabled = false
+        history.isEnabled = true
+        afterAnimation()
+        
+    }
     /*
     // MARK: - Navigation
 
