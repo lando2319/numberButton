@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var picker: UIPickerView!
     var strings: [String] = []
+    var rolls: [Int] = []
     var options: [Double] = []
     
     var total = 0
@@ -30,15 +31,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return
         }
         
-        let diceRoll1 = Int(arc4random_uniform(6) + 1)
-        compRoll = diceRoll1
-        
-        self.topLabel.numberOfLines = 0
-        
-        self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll1)"
         
         let diceRoll = Int(arc4random_uniform(6) + 1)
         userRoll = diceRoll
+        rolls.append(userRoll)
         total += diceRoll
         count += 1
         self.bottomLabel.text = "Your number is \(diceRoll)"
@@ -51,7 +47,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             money -= bet
             win = false
         }
-        moneyLabel.text = "You have $\(money)"
+        moneyLabel.text = "You have $\(money)0"
+        
+        let diceRoll1 = Int(arc4random_uniform(6) + 1)
+        compRoll = diceRoll1
+        
+        self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll1)"
     }
     
     override func viewDidLoad() {
@@ -66,7 +67,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll)"
         
-        for i in 1...100 {
+        for i in 1...Int(money) {
             options.append(Double(i))
         }
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,9 +83,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let passedPhrase = bottomLabel.text
         newVC.recievedString = passedPhrase!
         newVC.strings = strings
+        newVC.rolls = rolls
         newVC.average = Double(total) / Double(count)
         newVC.win = win
         newVC.bet = bet
+        newVC.roll = userRoll
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

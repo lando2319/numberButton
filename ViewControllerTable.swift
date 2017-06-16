@@ -12,6 +12,10 @@ class ViewControllerTable: UIViewController, UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var table: UITableView!
     var recievedStrings: [String] = []
+    var rolls: [Int] = []
+    var dice: [UIImage] = [UIImage(named: "die1")!, UIImage(named: "die2")!,
+                                 UIImage(named: "die3")!, UIImage(named: "die4")!,
+                                 UIImage(named: "die5")!, UIImage(named: "die6")!]
     var average: Double = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,7 @@ class ViewControllerTable: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = recievedStrings[indexPath.row]
+        cell.imageView?.image = dice[rolls[indexPath.row]-1]
         cell.detailTextLabel?.text = "Nice roll!"
         return cell
     }

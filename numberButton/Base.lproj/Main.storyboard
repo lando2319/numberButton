@@ -94,33 +94,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am0-ir-GbI">
-                                <rect key="frame" x="26" y="288.5" width="323" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Luck!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am0-ir-GbI">
+                                <rect key="frame" x="26" y="288" width="323" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-Ck-rsx">
-                                <rect key="frame" x="0.0" y="342.5" width="375" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-Ck-rsx">
+                                <rect key="frame" x="0.0" y="451.5" width="375" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UUC-Z3-laU">
+                                <rect key="frame" x="129" y="333" width="116" height="90.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="14l-iw-GIh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="am0-ir-GbI" firstAttribute="leading" secondItem="8Bo-De-XT7" secondAttribute="leadingMargin" constant="10" id="IXm-sl-2M1"/>
+                            <constraint firstItem="UUC-Z3-laU" firstAttribute="top" secondItem="am0-ir-GbI" secondAttribute="bottom" constant="24" id="N79-dl-e44"/>
                             <constraint firstItem="Hpd-Ck-rsx" firstAttribute="leading" secondItem="8Bo-De-XT7" secondAttribute="leading" id="Nbj-sG-2xq"/>
+                            <constraint firstItem="Hpd-Ck-rsx" firstAttribute="top" secondItem="UUC-Z3-laU" secondAttribute="bottom" constant="28" id="WyQ-lk-H5i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="am0-ir-GbI" secondAttribute="trailing" constant="10" id="ZYv-Gc-nth"/>
+                            <constraint firstItem="UUC-Z3-laU" firstAttribute="centerX" secondItem="am0-ir-GbI" secondAttribute="centerX" id="cco-hk-Fv0"/>
                             <constraint firstItem="Hpd-Ck-rsx" firstAttribute="centerX" secondItem="am0-ir-GbI" secondAttribute="centerX" id="fFm-CL-3vH"/>
-                            <constraint firstItem="Hpd-Ck-rsx" firstAttribute="top" secondItem="am0-ir-GbI" secondAttribute="bottom" constant="34" id="ily-ZC-2At"/>
+                            <constraint firstItem="Hpd-Ck-rsx" firstAttribute="top" secondItem="am0-ir-GbI" secondAttribute="bottom" constant="142.5" id="ily-ZC-2At"/>
                             <constraint firstItem="am0-ir-GbI" firstAttribute="centerY" secondItem="8Bo-De-XT7" secondAttribute="centerY" constant="-35" id="s29-MF-Ufg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="eJC-dC-kVJ">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="U1n-Xq-9v9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U4T-ki-kvf">
-                                <rect key="frame" x="254" y="7" width="50" height="30"/>
+                                <rect key="frame" x="309" y="7" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="History"/>
                                 <connections>
@@ -130,13 +139,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dieRoll" destination="UUC-Z3-laU" id="IN7-pa-Cc0"/>
                         <outlet property="myLabel1" destination="am0-ir-GbI" id="3at-XO-Rq9"/>
                         <outlet property="resultLabel" destination="Hpd-Ck-rsx" id="QbX-AF-onz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9g-vs-wCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602.8985507246377" y="138.58695652173915"/>
+            <point key="canvasLocation" x="1602.4000000000001" y="138.0809595202399"/>
         </scene>
         <!--History-->
         <scene sceneID="sCj-Aj-Apa">
@@ -183,6 +193,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="BoN-Va-5jm" id="kKE-Gd-JzK"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -196,7 +209,7 @@
                     <navigationItem key="navigationItem" title="History" id="CM6-2v-nZl">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="CWc-bv-sEU">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vQB-fi-Pdg">
-                                <rect key="frame" x="338" y="7" width="56" height="30"/>
+                                <rect key="frame" x="303" y="7" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Average"/>
                                 <connections>
