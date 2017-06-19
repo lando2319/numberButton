@@ -199,7 +199,7 @@
 				TargetAttributes = {
 					CC7E5E4D1EF2558200EEC608 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 5Z222Q68CQ;
+						DevelopmentTeam = 7U7FBX82E9;
 						ProvisioningStyle = Automatic;
 					};
 					CC7E5E611EF2558300EEC608 = {
@@ -423,7 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5Z222Q68CQ;
+				DEVELOPMENT_TEAM = 7U7FBX82E9;
 				INFOPLIST_FILE = numberButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.numberButton;
@@ -436,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5Z222Q68CQ;
+				DEVELOPMENT_TEAM = 7U7FBX82E9;
 				INFOPLIST_FILE = numberButton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.numberButton;

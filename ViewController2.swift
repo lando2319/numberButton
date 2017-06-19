@@ -12,6 +12,7 @@ class ViewController2: UIViewController {
 
     @IBOutlet weak var myLabel1: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var back: UINavigationItem!
     @IBOutlet weak var dieRoll: UIImageView!
     @IBOutlet weak var stop: UIButton!
     @IBOutlet weak var history: UIButton!
@@ -31,6 +32,7 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         history.isEnabled = false
         stop.isEnabled = true
+        back.hidesBackButton = true
         super.viewDidLoad()
         dieRoll.animationImages = animImages
         dieRoll.animationDuration = 0.75
@@ -48,6 +50,7 @@ class ViewController2: UIViewController {
     @IBAction func stopPressed(_ sender: Any) {
         stop.isEnabled = false
         history.isEnabled = true
+        back.hidesBackButton = false
         afterAnimation()
         
     }

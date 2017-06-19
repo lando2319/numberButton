@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -25,12 +26,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var compRoll = 0
     var userRoll = 0
     var win = true
+    
     @IBAction func buttonIsTapped(_ sender: Any) {
         if bet > money {
             createAlert(title: "Invalid Bet", message: "You cannot bet more money than you have.")
             return
         }
-        
         
         let diceRoll = Int(arc4random_uniform(6) + 1)
         userRoll = diceRoll
@@ -52,7 +53,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let diceRoll1 = Int(arc4random_uniform(6) + 1)
         compRoll = diceRoll1
         
-        self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll1)"
+        self.topLabel.text = "Roll the die, win your bet if you roll \(diceRoll1) or higher!"
     }
     
     override func viewDidLoad() {
@@ -65,7 +66,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         self.topLabel.numberOfLines = 0
         
-        self.topLabel.text = "Tap Button, get a random number (1 - 6), see if your number is higher than \(diceRoll)"
+        self.topLabel.text = "Roll the die, win your bet if you roll \(diceRoll) or higher!"
         
         for i in 1...Int(money) {
             options.append(Double(i))
@@ -81,6 +82,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC: ViewController2 = segue.destination as! ViewController2
         let passedPhrase = bottomLabel.text
+        self.bottomLabel.text = ""
         newVC.recievedString = passedPhrase!
         newVC.strings = strings
         newVC.rolls = rolls
@@ -108,7 +110,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        bet = options[row]
+        let authenticationContext = LAContext()
+        var error: NSError?
+        
+        if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
+            // Touch ID, navigating to success VC, handling errors
+            authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Use Touch ID to confirm bet", reply: { (success, error) in
+                if success {
+                    self.bet = self.options[row]
+                }
+                else {
+                    if let error = error as NSError? {
+                        //display an error
+                        self.showAlertView(message: self.errorMessage(errorCode: error.code))
+                    }
+                    self.picker.selectRow(Int(self.bet)-1, inComponent: 0, animated: true)
+                    return
+                }
+            })
+        }
+        else {
+            createAlert(title: "No Touch ID", message: "This device does not support Touch ID.")
+            return
+        }
     }
 
     func createAlert(title: String, message: String) {
@@ -118,6 +142,46 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertView(message: String){
+        createAlert(title: "Error", message: message)
+    }
+    
+    func errorMessage(errorCode: Int) -> String {
+        var message = String()
+        switch errorCode {
+        case LAError.appCancel.rawValue:
+            message = "Authentcation was cancelled by application"
+            
+        case LAError.authenticationFailed.rawValue:
+            message = "The user failed to provide valid credentials"
+            
+        case LAError.invalidContext.rawValue:
+            message = "The context is invalid"
+            
+        case LAError.passcodeNotSet.rawValue:
+            message = "The passcode is not set on the device"
+            
+        case LAError.systemCancel.rawValue:
+            message = "Authentcation was cancelled by the system"
+            
+        case LAError.touchIDLockout.rawValue:
+            message = "Too many failed attempts"
+            
+        case LAError.touchIDNotAvailable.rawValue:
+            message = "Touch ID is not available on the device"
+            
+        case LAError.userCancel.rawValue:
+            message = "The user did cancel"
+        
+        case LAError.userFallback.rawValue:
+            message = "The user chose to use the fallback"
+            
+        default:
+            message = "Did not find error code on LAError object"
+        }
+        return message
     }
 }
 
