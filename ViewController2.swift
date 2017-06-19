@@ -12,20 +12,32 @@ class ViewController2: UIViewController {
 
     @IBOutlet weak var myLabel1: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var back: UINavigationItem!
+    @IBOutlet weak var dieRoll: UIImageView!
+    @IBOutlet weak var stop: UIButton!
+    @IBOutlet weak var history: UIButton!
+    
+    var animImages: [UIImage] = [UIImage(named: "die1")!, UIImage(named: "die2")!,
+                                 UIImage(named: "die3")!, UIImage(named: "die4")!,
+                                 UIImage(named: "die5")!, UIImage(named: "die6")!,UIImage(named: "die3")!, UIImage(named: "die1")!,
+                                 UIImage(named: "die5")!, UIImage(named: "die2")!,
+                                 UIImage(named: "die4")!, UIImage(named: "die6")!]
     var recievedString = String()
     var strings: [String] = []
+    var rolls: [Int] = []
     var average: Double = 0
     var win = true
     var bet = 0.0
+    var roll = 0
     override func viewDidLoad() {
+        history.isEnabled = false
+        stop.isEnabled = true
+        back.hidesBackButton = true
         super.viewDidLoad()
-        myLabel1.text = recievedString
-        if win {
-            resultLabel.text = "Congrats! You won $\(bet)0"
-        }
-        else {
-            resultLabel.text = "Sorry, you lost $\(bet)0"
-        }
+        dieRoll.animationImages = animImages
+        dieRoll.animationDuration = 0.75
+        dieRoll.startAnimating()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +47,13 @@ class ViewController2: UIViewController {
     }
     
 
+    @IBAction func stopPressed(_ sender: Any) {
+        stop.isEnabled = false
+        history.isEnabled = true
+        back.hidesBackButton = false
+        afterAnimation()
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -45,10 +64,25 @@ class ViewController2: UIViewController {
     }
     */
     
+    func afterAnimation() {
+        dieRoll.stopAnimating()
+        dieRoll.image = animImages[roll-1]
+        
+        myLabel1.text = recievedString
+        if win {
+            resultLabel.text = "Congrats! You won $\(bet)0"
+        }
+        else {
+            resultLabel.text = "Sorry, you lost $\(bet)0"
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC: ViewControllerTable = segue.destination as! ViewControllerTable
         newVC.recievedStrings.append(recievedString)
         newVC.recievedStrings = strings
+        newVC.rolls.append(roll)
+        newVC.rolls = rolls
         newVC.average = average
     }
 }
